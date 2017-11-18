@@ -33,11 +33,12 @@ echo "connected";}
 
 $sql3 = mysqli_query($conn, "SELECT * From item");
 $row = mysqli_num_rows($sql3);
+echo "<select name="select">";
 while ($row = mysqli_fetch_array($sql3)){
 echo "<option value=".$row['item_name'].">".$row['item_name']."</option>" ;
 }
-</select>
-    <input type="button" value="delete">
+echo "</select>"
+   <input type="button" value="delete">
 ?>
 </body>
 </html>
