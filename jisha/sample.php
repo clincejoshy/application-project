@@ -18,8 +18,8 @@ $iprice=$_POST["price"];
 echo "name".$itemName."price".$iprice;
 $db="mess";
 $query_insert="insert into item values(".$itemName.",".$iprice.")";
-$query_select="select * from item";
-mysqli_query($db,$query_insert) or die('Error querying database');
-mysqli_query($db,$query_select) or die('Error querying database');
+$query_select="SELECT * from item";
+mysqli_query($conn,$query_insert) or die('Error querying database');
+mysqli_query($conn,$query_select) or die('Error querying database');
 
 ?>
