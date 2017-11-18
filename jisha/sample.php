@@ -1,25 +1,41 @@
 <?php
-echo $_POST["iname"];
 $servername = "localhost";
 $username = "root";
 $password = "";
+$db="mess";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn =mysqli_connect($servername, $username, $password,$db);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "Connected successfully";
-echo $_POST["iname"];
+echo "Connected successfully<br>";
 $itemName=$_POST["iname"];
 $iprice=$_POST["price"];
-echo "name".$itemName."price".$iprice;
-$db="mess";
-$query_insert="insert into item values(".$itemName.",".$iprice.")";
-$query_select="SELECT * from item";
-mysqli_query($conn,$query_insert) or die('Error querying database');
-mysqli_query($conn,$query_select) or die('Error querying database');
+//$query_insert="insert into item values('$itemName','$iprice')";
+//$query_select="select * from item;";
+//mysqli_query($db,$query_insert) or die('Error querying database');
+//mysqli_query($conn,$query_select);
+$sql = "insert into item values('$itemName','$iprice')";
 
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+$sql1 = "SELECT * FROM item";
+$result = $conn->query($sql1);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "item name " . $row["item_name"]. " -price: " . $row["price"].  "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+$conn->close();
 ?>
