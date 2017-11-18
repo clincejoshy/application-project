@@ -12,8 +12,6 @@
     <input type="submit">
 </form>
 <h1>Delete an item</h1>
-<select name="select">
-<option>select</option>
 <?php
 $servername = "localhost";
 $username = "root";
@@ -29,16 +27,18 @@ if ($conn->connect_error) {
 }
 else
 {
-echo "connected";} 
+echo "connected";
 
+} 
+echo "<select name='select'>";	
 $sql3 = mysqli_query($conn, "SELECT * From item");
 $row = mysqli_num_rows($sql3);
-echo "<select name="select">";
+
 while ($row = mysqli_fetch_array($sql3)){
-echo "<option value=".$row['item_name'].">".$row['item_name']."</option>" ;
+echo "<option value='".$row['item_name']."'>".$row['item_name']."</option>" ;
 }
 echo "</select>"
-   <input type="button" value="delete">
+   //<input type="button" value="delete">
 ?>
 </body>
 </html>
