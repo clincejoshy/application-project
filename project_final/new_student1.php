@@ -5,15 +5,64 @@
     <meta charset="UTF-8">
     <title>Enter new student details</title>
 </head>
-<body><h1>Enter new student details</h1>
+<body>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Mess Bill</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href=xyz.php class="nav-link">Stock Management</a>
+      </li>
+      <li class="nav-item">
+        <a href=new_student1.php class="nav-link active">Student details</a>
+      </li>
+      
+    <li class="nav-item">
+        <a href=consumption.php class="nav-link">New bill</a>
+      </li>
+	<li class="nav-item">
+		<a href=sam2.php class="nav-link">Total Bill</a>
+		</li>
+		</ul>
+  </div> 
+</nav>
+
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Student Details</h1>
+    <p class="lead">You can Add or Delete the student details here</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+<div class="card">
+  <div class="card-body">  
+<h1>Enter new student details</h1>
 <form action="#" method="post">
 <b>Roll no</b>
-    <input type="number" name="rollno"><br/><b>Name :</b>
-    <input type="text" name="name"><br/><br/>
-    <br/>
-    <input type="submit">
+    <input type="number" name="rollno" class="form-control"><br/><b>Name :</b>
+    <input type="text" name="name" class="form-control"><br/>
+    <input type="submit"  class='btn btn-primary'>
 </form>
+</div></div>
 <br/>
+<div class="card">
+  <div class="card-body">  
 <h2>
 Exsting student details
 </h2>
@@ -48,7 +97,7 @@ $sql = "insert into student values('$itemName','$iprice')";
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "<font color='red'>Error: " . $sql . "</font><br>" . $conn->error;
 }
 }
 $sql1 = "SELECT * FROM student ORDER BY rollno ASC";
@@ -56,23 +105,26 @@ $result = $conn->query($sql1);
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo "<table><tr><th>Roll no</th><th>Name</th></tr>";
+	echo "<table class='table'><thead class='thead-dark'><tr><th>Roll no</th><th>Name</th></tr></thead><tbody>";
     while($row = $result->fetch_assoc()) {
 		
         echo "<tr><td>".$row["rollno"]."</td><td>".$row["name"]."</td></tr>";
     }
-	echo "</table>";
+	echo "</tbody></table>";
 } else {
     echo "0 results";
 }
 
 $conn->close();
 ?>
-
+</div></div><br/>
+<div class="card">
+  <div class="card-body">  
 <h2>
 Delete a Student record
 </h2>
 <form action="delete_stud.php" method="post">
+<div class='form-group'>
 <?php
 $servername = "localhost";
 $username = "root";
@@ -91,7 +143,8 @@ else
 //echo "connected";
 
 } 
-echo "<select name='select'>";	
+
+echo "<select name='select' class='form-control'>";	
 $sql3 = mysqli_query($conn, "SELECT * From student ORDER BY rollno ASC");
 $row = mysqli_num_rows($sql3);
 
@@ -102,18 +155,9 @@ echo "</select>"
    //<input type="button" value="delete">
    
 ?>
-<input type="submit" value="Delete">
-</form>
-
-
-<h3>Links</h3>
-<a href=xyz.php>Enter the item details</a>
 <br/>
-<a href=new_student1.php>Enter the Student details</a>
-<br/>
-<a href=consumption.php>New bill</a>
-<br/>
-<a href=sam2.php>Total Bill details</a>
-<br/>
+<input type="submit" value="Delete"  class='btn btn-danger'>
+</div></form>
+</div></div><br/><br/>
 </body>
 </html>

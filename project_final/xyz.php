@@ -11,7 +11,7 @@
 <script src="js/bootstrap.js"></script>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Mess Bill</a>
+  <a class="navbar-brand" href="#">MESS BILL</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -20,12 +20,12 @@
 
   <!-- Navbar links -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" >
       <li class="nav-item">
-        <a href=xyz.php class="nav-link">Stock Management</a>
+        <a href=xyz.php class="nav-link active">Stock Management</a>
       </li>
       <li class="nav-item">
-        <a href=new_student1.php class="nav-link">Enter the Student details</a>
+        <a href=new_student1.php class="nav-link">Student details</a>
       </li>
       
     <li class="nav-item">
