@@ -36,6 +36,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-
+header('Location:xyz.php');
 $conn->close();
 ?>

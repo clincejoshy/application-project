@@ -25,4 +25,5 @@ else
 }
 
 $conn->close();
+header('Location:new_student1.php');
 ?>

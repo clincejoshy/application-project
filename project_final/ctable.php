@@ -29,4 +29,6 @@ $row = $result->fetch_assoc();
 $price=$row["price"];
 $sql="insert into sconsumption values('$rollno',curdate(),'$quantity'*'$price','$name','$itemname')";
 $conn->query($sql);
+$conn->close();
+header('Location:consumption.php');
 ?>

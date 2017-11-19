@@ -41,6 +41,17 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']."</option>" ;
 echo "</select>";
 echo "<input type='submit' value='delete'>";
 echo "</form>";
+$conn->close();
 ?>
+
+<h3>Links</h3>
+<a href=xyz.php>Enter the item details</a>
+<br/>
+<a href=new_student1.php>Enter the Student details</a>
+<br/>
+<a href=consumption.php>New bill</a>
+<br/>
+<a href=sam2.php>Total Bill details</a>
+<br/>
 </body>
 </html>

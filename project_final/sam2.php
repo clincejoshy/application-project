@@ -22,7 +22,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 //echo "Connected successfully<br>";
-$sql = "SELECT * FROM student";
+$sql = "SELECT * FROM student  ORDER BY rollno ASC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -33,7 +33,7 @@ $rollno=$row["rollno"];
 
 $name=$row["name"];
 
-$sql1 = "SELECT sum(tprice) FROM sconsumption where rollno='$rollno'";
+$sql1 = "SELECT sum(tprice) FROM sconsumption where rollno=$rollno";
 $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) {
     // output data of each row
@@ -54,6 +54,19 @@ echo "0 results";
 }else{
 echo "0 results";
 }
+$conn->close();
 ?>
+
+
+
+<h3>Links</h3>
+<a href=xyz.php>Enter the item details</a>
+<br/>
+<a href=new_student1.php>Enter the Student details</a>
+<br/>
+<a href=consumption.php>New bill</a>
+<br/>
+<a href=sam2.php>Total Bill details</a>
+<br/>
 </body>
 </html>

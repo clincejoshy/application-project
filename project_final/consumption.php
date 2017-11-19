@@ -26,7 +26,7 @@ else
 echo "connected";
 
 } 
-$sql3 = mysqli_query($conn, "SELECT * From student");
+$sql3 = mysqli_query($conn, "SELECT * From student ORDER BY rollno ASC");
 $row = mysqli_num_rows($sql3);
 
 while ($row = mysqli_fetch_array($sql3)){
@@ -67,5 +67,17 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']."</option>" ;
     <input type="number" name="quantity"><br/><br/>
     <input type="submit" value="Submit">
 </form>
+
+
+
+<h3>Links</h3>
+<a href=xyz.php>Enter the item details</a>
+<br/>
+<a href=new_student1.php>Enter the Student details</a>
+<br/>
+<a href=consumption.php>New bill</a>
+<br/>
+<a href=sam2.php>Total Bill details</a>
+<br/>
 </body>
 </html>

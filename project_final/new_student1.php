@@ -100,8 +100,20 @@ echo "<option value='".$row['rollno']."'>".$row['rollno']."</option>" ;
 }
 echo "</select>"
    //<input type="button" value="delete">
+   
 ?>
 <input type="submit" value="Delete">
 </form>
+
+
+<h3>Links</h3>
+<a href=xyz.php>Enter the item details</a>
+<br/>
+<a href=new_student1.php>Enter the Student details</a>
+<br/>
+<a href=consumption.php>New bill</a>
+<br/>
+<a href=sam2.php>Total Bill details</a>
+<br/>
 </body>
 </html>
