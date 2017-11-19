@@ -49,6 +49,7 @@
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
+  Fields marked as <font color='red'>*</font> cannot be empty<br/>
 <div class="card">
   <div class="card-body">  
 <h2>
@@ -90,7 +91,7 @@ if ($conn->query($sql) === TRUE) {
 }
 else 
 {
-	echo "Fields marked as <font color='red'>*</font> cannot be empty<br/>";
+	//echo "Fields marked as <font color='red'>*</font> cannot be empty<br/>";
 }
 $sql1 = "SELECT * FROM item";
 $result = $conn->query($sql1);

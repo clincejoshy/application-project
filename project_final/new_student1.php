@@ -92,7 +92,7 @@ if ($conn->query($sql) === TRUE) {
 }
 }
 else{
-	echo "Fields marked as <font color='red'>*</font> cannot be empty<br/>";
+	//echo "Fields marked as <font color='red'>*</font> cannot be empty<br/>";
 }
 $sql1 = "SELECT * FROM student ORDER BY rollno ASC";
 $result = $conn->query($sql1);
