@@ -30,6 +30,7 @@ else
 echo "connected";
 
 } 
+echo "<form action='delete.php' method='post'>";
 echo "<select name='select'>";	
 $sql3 = mysqli_query($conn, "SELECT * From item");
 $row = mysqli_num_rows($sql3);
@@ -37,8 +38,9 @@ $row = mysqli_num_rows($sql3);
 while ($row = mysqli_fetch_array($sql3)){
 echo "<option value='".$row['item_name']."'>".$row['item_name']."</option>" ;
 }
-echo "</select>"
-   //<input type="button" value="delete">
+echo "</select>";
+echo "<input type='submit' value='delete'>";
+echo "</form>";
 ?>
 </body>
 </html>
