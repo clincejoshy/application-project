@@ -21,7 +21,7 @@ $conn =mysqli_connect($servername, $username, $password,$db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "Connected successfully<br>";
+//echo "Connected successfully<br>";
 $sql = "SELECT * FROM student";
 $result = $conn->query($sql);
 
