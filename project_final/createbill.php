@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
     }
 	echo "Total price is ". $row1["sum(tprice)"];
 } else {
-    echo "0 results";
+    echo "Go and eat. Not took anything!<br> Total amount is 0";
 }
 //header('Location:xyz.php');
 $conn->close();
