@@ -18,14 +18,20 @@ $sqld = "select * from sconsumption where sconsumption.name = '$studname'";
 if ($conn->query($sqld) === FALSE){
     echo "Error: " . $sqld . "<br>" . $conn->error;
 }
-$sql1 = "SELECT * FROM sconsumption";
+$sql1 = "SELECT * FROM sconsumption where rollno=".$studname;
+$sql2 = "select sum(tprice) from sconsumption where rollno=".$studname;
 $result = $conn->query($sql1);
-
+$result1 = $conn->query($sql2);
+$row1 = $result1->fetch_assoc();
 if ($result->num_rows > 0) {
     // output data of each row
+	echo "<table>";
     while($row = $result->fetch_assoc()) {
-        echo "item name " . $row["item_name"]. " -price: " . $row["price"].  "<br>";
+        echo "<tr><td>" . $row["name"]. "</td> <td>" . $row["date"]. "</td> <td>" . $row["itemname"]. "</td> <td>" . $row["tprice"]. "</td></tr><br>" ;
+	echo "</table>";
+	
     }
+	echo "Total price is ". $row1["sum(tprice)"];
 } else {
     echo "0 results";
 }
