@@ -50,17 +50,8 @@
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
-<div class="card">
-  <div class="card-body">  
-<h1>Enter new student details</h1>
-<form action="#" method="post">
-<b>Roll no</b>
-    <input type="number" name="rollno" class="form-control"><br/><b>Name :</b>
-    <input type="text" name="name" class="form-control"><br/>
-    <input type="submit"  class='btn btn-primary'>
-</form>
-</div></div>
-<br/>
+  
+  
 <div class="card">
   <div class="card-body">  
 <h2>
@@ -89,7 +80,7 @@ $iprice=$_POST["rollno"];
 //$query_select="select * from item;";
 //mysqli_query($db,$query_insert) or die('Error querying database');
 //mysqli_query($conn,$query_select);
-if ($itemName!="" || $iprice!="") {
+if ($itemName!='' && $iprice!='') {
    
 $sql = "insert into student values('$itemName','$iprice')";
 
@@ -99,6 +90,9 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "<font color='red'>Error: " . $sql . "</font><br>" . $conn->error;
 }
+}
+else{
+	//echo "Fields marked as <font color='red'>*</font> cannot be empty<br/>";
 }
 $sql1 = "SELECT * FROM student ORDER BY rollno ASC";
 $result = $conn->query($sql1);
@@ -112,12 +106,25 @@ if ($result->num_rows > 0) {
     }
 	echo "</tbody></table>";
 } else {
-    echo "0 results";
+    echo "0 Student records";
 }
 
 $conn->close();
 ?>
 </div></div><br/>
+<div class="card">
+  <div class="card-body">  
+<h1>Enter new student details</h1>
+Fields marked as <font color='red'>*</font> are mandatory
+<form action="#" method="post">
+<b>Roll no<font color='red'>*</font></b>
+    <input type="number" name="rollno" class="form-control"><br/><b>Name<font color='red'>*</font></b>
+    <input type="text" name="name" class="form-control"><br/>
+    <input type="submit"  class='btn btn-primary'>
+</form>
+</div></div>
+<br/>
+
 <div class="card">
   <div class="card-body">  
 <h2>

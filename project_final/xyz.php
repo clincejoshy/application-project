@@ -11,7 +11,7 @@
 <script src="js/bootstrap.js"></script>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">MESS BILL</a>
+  <a class="navbar-brand" href="#">Mess Bill</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -49,6 +49,7 @@
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
+  Fields marked as <font color='red'>*</font> cannot be empty<br/>
 <div class="card">
   <div class="card-body">  
 <h2>
@@ -77,7 +78,7 @@ $iprice=$_POST["price"];
 //$query_select="select * from item;";
 //mysqli_query($db,$query_insert) or die('Error querying database');
 //mysqli_query($conn,$query_select);
-if ($itemName!="" || $iprice!="") {
+if ($itemName!="" && $iprice!="") {
    
 $sql = "insert into item values('$itemName','$iprice')";
 
@@ -87,6 +88,10 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+}
+else 
+{
+	//echo "Fields marked as <font color='red'>*</font> cannot be empty<br/>";
 }
 $sql1 = "SELECT * FROM item";
 $result = $conn->query($sql1);
@@ -100,7 +105,7 @@ if ($result->num_rows > 0) {
     }
 	echo "</table>";
 } else {
-    echo "0 results";
+    echo "0 Items in the menu";
 }
 
 $conn->close();
@@ -112,10 +117,10 @@ $conn->close();
 <h1>Add a new item</h1>
 <form action="sample.php" method="post">
 <div class="form-group">
-<b>Name of the item</b>
+<b>Name of the item<font color='red'>*</font></b>
 	
     <input type="text" name="iname" class="form-control"><br/><br/>
-    <b>Price per item</b>
+    <b>Price per item<font color='red'>*</font></b>
     <input type="number" name="price" class="form-control"><br/>
     <input type="submit" class="btn btn-primary">
 </form>

@@ -93,12 +93,12 @@ echo "   <td>$name</td>";
 echo "   <td>$totalbill</td>";
  echo "</tr>";}
 }else{
-echo "0 results";
+echo "0 student records";
 }
 
   }
 }else{
-echo "0 results";
+echo "0 student records";
 }
 $conn->close();
 ?>
