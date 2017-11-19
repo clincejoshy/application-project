@@ -49,20 +49,8 @@
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
-<h1>Add a new item</h1>
-<form action="sample.php" method="post">
-<div class="form-group">
-<b>Name of the item</b>
-	
-    <input type="text" name="iname" class="form-control"><br/><br/>
-    <b>Price per item</b>
-    <input type="number" name="price" class="form-control"><br/>
-    <input type="submit" class="btn btn-primary">
-</form>
-</div>
-<br/><br/>
-
-
+<div class="card">
+  <div class="card-body">  
 <h2>
 Exsting Item details
 </h2>
@@ -105,7 +93,7 @@ $result = $conn->query($sql1);
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo "<table><tr><th>Item Name</th><th>Price</th></tr>";
+	echo "<table class='table'><thead class='thead-dark'><tr><th>Item Name</th><th>Price</th></tr></thead><tbody>";
     while($row = $result->fetch_assoc()) {
 		
         echo "<tr><td>".$row["item_name"]."</td><td>".$row["price"]."</td></tr>";
@@ -117,7 +105,26 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+<br/>
+</div></div><br/>
+<div class="card">
+  <div class="card-body">  
+<h1>Add a new item</h1>
+<form action="sample.php" method="post">
+<div class="form-group">
+<b>Name of the item</b>
+	
+    <input type="text" name="iname" class="form-control"><br/><br/>
+    <b>Price per item</b>
+    <input type="number" name="price" class="form-control"><br/>
+    <input type="submit" class="btn btn-primary">
+</form>
+</div>
+<br/><br/>
 
+</div></div><br/>
+<div class="card">
+  <div class="card-body">  
 <h1>Delete an item</h1>
 <?php
 $servername = "localhost";
@@ -151,7 +158,7 @@ echo "<br/><input type='submit' value='delete' class='btn btn-danger'>";
 echo "</div></form>";
 $conn->close();
 ?>
-</div>
+</div></div></div>
   <div class="col-sm-3"></div>
   </div>
   
