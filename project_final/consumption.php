@@ -34,6 +34,9 @@
 	<li class="nav-item">
 		<a href=sam2.php class="nav-link">Total Bill</a>
 		</li>
+		<li class="nav-item">
+		<a href=billing.php class="nav-link">Individual Bill</a>
+		</li>
 		</ul>
   </div> 
 </nav>
