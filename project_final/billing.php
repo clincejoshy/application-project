@@ -111,7 +111,7 @@ $studname=$_POST["select"];
 //$sqld = "select *,DATE_FORMAT(date, "%Y") from sconsumption where sconsumption.name = '$studname'";
 
 if ($conn->query($sqld) === FALSE){
-    echo "Error: " . $sqld . "<br>" . $conn->error;
+    //echo "" . $sqld . "<br>" . $conn->error;
 }
 $sql1 = "SELECT *,DATE_FORMAT(date,'%D-%M-%Y') FROM sconsumption where rollno=".$studname;
 $sql2 = "select sum(tprice) from sconsumption where rollno=".$studname;
