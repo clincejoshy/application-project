@@ -6,6 +6,15 @@
     <title>Enter new student details</title>
 </head>
 <body>
+<?php 
+error_reporting(0);
+ini_set('display_errors', 0);
+    session_start();
+    if($_SESSION["role"]!="admin")
+    {
+        header("location:php/autologin.php");
+    }
+?>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.js"></script>
 <script src="js/popper.js"></script>
@@ -35,9 +44,10 @@
 	<li class="nav-item">
 		<a href=sam2.php class="nav-link">Total Bill</a>
 		</li>
-		<li class="nav-item">
-		<a href=billing.php class="nav-link">Individual Bill</a>
-		</li>
+		<li class="nav-item active">
+        <a class="nav-link" href="logout1.php">Logout</a>
+      </li>
+		
 		</ul>
   </div> 
 </nav>
@@ -79,13 +89,14 @@ if ($conn->connect_error) {
 //echo "Connected successfully<br>";
 $itemName=$_POST["name"];
 $iprice=$_POST["rollno"];
+$pwd=$_POST["password"];
 //$query_insert="insert into item values('$itemName','$iprice')";
 //$query_select="select * from item;";
 //mysqli_query($db,$query_insert) or die('Error querying database');
 //mysqli_query($conn,$query_select);
 if ($itemName!='' && $iprice!='') {
    
-$sql = "insert into student values('$itemName','$iprice')";
+$sql = "insert into student values('$itemName','$iprice','$pwd')";
 
 
 if ($conn->query($sql) === TRUE) {
@@ -122,7 +133,8 @@ Fields marked as <font color='red'>*</font> are mandatory
 <form action="#" method="post">
 <b>Roll no<font color='red'>*</font></b>
     <input type="number" name="rollno" class="form-control"><br/><b>Name<font color='red'>*</font></b>
-    <input type="text" name="name" class="form-control"><br/>
+    <input type="text" name="name" class="form-control"><br/><b>Password<font color='red'>*</font></b>
+	<input type="password" name="password" class="form-control"><br/>
     <input type="submit"  class='btn btn-primary'>
 </form>
 </div></div>
