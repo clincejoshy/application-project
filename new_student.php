@@ -25,7 +25,7 @@ $result = $conn->query($sql1);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "student name " . $row["name"]. " Roll no: " . $row["rollno"].  "<br>";
+        echo "student name " . $row["name"]. " Admission no: " . $row["rollno"].  "<br>";
     }
 } else {
     echo "0 results";

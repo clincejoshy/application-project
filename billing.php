@@ -22,7 +22,7 @@ ini_set('display_errors', 0);
 <script src="js/bootstrap.js"></script>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Mess Bill</a>
+  <a class="navbar-brand" href="#">Tricodia - Mess Calculator</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

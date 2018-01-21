@@ -22,7 +22,7 @@ ini_set('display_errors', 0);
 <script src="js/bootstrap.js"></script>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Mess Bill</a>
+  <a class="navbar-brand" href="#">Tricodia - Mess Calculator</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -36,11 +36,11 @@ ini_set('display_errors', 0);
         <a href=xyz.php class="nav-link active">Stock Management</a>
       </li>
       <li class="nav-item">
-        <a href=new_student1.php class="nav-link">Student details</a>
+        <a href=new_student1.php class="nav-link">Student Details</a>
       </li>
 
     <li class="nav-item">
-        <a href=consumption.php class="nav-link">New bill</a>
+        <a href=consumption.php class="nav-link">New Bill</a>
       </li>
 	<li class="nav-item">
 		<a href=sam2.php class="nav-link">Total Bill</a>
