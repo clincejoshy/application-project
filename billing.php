@@ -7,7 +7,7 @@
 Individual Billing
 </head>
 <body>
-<?php 
+<?php
 error_reporting(0);
 ini_set('display_errors', 0);
     session_start();
@@ -32,7 +32,7 @@ ini_set('display_errors', 0);
   <!-- Navbar links -->
   <div class="collapse navbar-collapse " id="collapsibleNavbar">
     <ul class="navbar-nav" >
-      
+
 		<li class="nav-item">
 		<a href=billing.php class="nav-link active">Individual Bill</a>
 		</li>
@@ -40,7 +40,7 @@ ini_set('display_errors', 0);
         <a class="nav-link" href="logout.php">Logout</a>
       </li>
 		</ul>
-  </div> 
+  </div>
 </nav>
 
 
@@ -54,23 +54,19 @@ ini_set('display_errors', 0);
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
-  
+
 <br/>
 <div class="card">
-  <div class="card-body"> 
+  <div class="card-body">
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
+require("connect.php");
 
 // Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 //echo "Connected successfully<br>";
 $studname=$_POST["select"];
 //$sqld = "select *,DATE_FORMAT(date, "%Y") from sconsumption where sconsumption.name = '$studname'";
@@ -91,8 +87,8 @@ if ($result->num_rows > 0) {
 	echo "<table  class='table'><thead class='thead-dark'><tr><th>Date</th><th>Item</th><th>Cost</th></tr></thead><tbody>";
     while($row = $result->fetch_assoc()) {
         echo "<tr><td>" .$row["DATE_FORMAT(date,'%D-%M-%Y')"]. "</td> <td>" . $row["itemname"]. "</td> <td>" . $row["tprice"]. "</td></tr><br>" ;
-	
-	
+
+
     }
 	echo "</tbody></table>";
 	echo "<div class='alert alert-primary text-right' role='alert'>Total price is ". $row1["sum(tprice)"]."</div>";
@@ -101,6 +97,6 @@ if ($result->num_rows > 0) {
 }
 //header('Location:xyz.php');
 $conn->close();
-?>  
+?>
 </div></div></body>
 </html>

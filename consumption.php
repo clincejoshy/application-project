@@ -7,7 +7,7 @@
     <title>Consumption</title>
 </head>
 <body>
-<?php 
+<?php
 error_reporting(0);
 ini_set('display_errors', 0);
     session_start();
@@ -38,7 +38,7 @@ ini_set('display_errors', 0);
       <li class="nav-item">
         <a href=new_student1.php class="nav-link">Student details</a>
       </li>
-      
+
     <li class="nav-item">
         <a href=consumption.php class="nav-link active">New bill</a>
       </li>
@@ -48,9 +48,9 @@ ini_set('display_errors', 0);
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
       </li>
-		
+
 		</ul>
-  </div> 
+  </div>
 </nav>
 
 
@@ -71,13 +71,7 @@ ini_set('display_errors', 0);
 <b>Select the student roll no</b>
 <select name="roll_no" class='form-control'>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {
@@ -87,7 +81,7 @@ else
 {
 echo "connected";
 
-} 
+}
 $sql3 = mysqli_query($conn, "SELECT * From student ORDER BY rollno ASC");
 $row = mysqli_num_rows($sql3);
 
@@ -100,13 +94,7 @@ echo "</select>";
 <b>Select item</b>
 <select name="item" class='form-control'>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {
@@ -116,7 +104,7 @@ else
 {
 echo "connected";
 
-} 
+}
 $sql03 = mysqli_query($conn, "SELECT * From item");
 $row = mysqli_num_rows($sql03);
 

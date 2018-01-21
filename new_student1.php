@@ -8,7 +8,7 @@
     <title>Enter new student details</title>
 </head>
 <body>
-<?php 
+<?php
 error_reporting(0);
 ini_set('display_errors', 0);
     session_start();
@@ -39,7 +39,7 @@ ini_set('display_errors', 0);
       <li class="nav-item">
         <a href=new_student1.php class="nav-link active">Student details</a>
       </li>
-      
+
     <li class="nav-item">
         <a href=consumption.php class="nav-link">New bill</a>
       </li>
@@ -49,9 +49,9 @@ ini_set('display_errors', 0);
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
       </li>
-		
+
 		</ul>
-  </div> 
+  </div>
 </nav>
 
 
@@ -65,10 +65,10 @@ ini_set('display_errors', 0);
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="col-sm-6">
-  
-  
+
+
 <div class="card">
-  <div class="card-body">  
+  <div class="card-body">
 <h2>
 Exsting student details
 </h2>
@@ -87,7 +87,7 @@ $conn =mysqli_connect($servername, $username, $password,$db);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 //echo "Connected successfully<br>";
 $itemName=$_POST["name"];
 $iprice=$_POST["rollno"];
@@ -97,7 +97,7 @@ $pwd=$_POST["password"];
 //mysqli_query($db,$query_insert) or die('Error querying database');
 //mysqli_query($conn,$query_select);
 if ($itemName!='' && $iprice!='') {
-   
+
 $sql = "insert into student values('$itemName','$iprice','$pwd')";
 
 
@@ -117,7 +117,7 @@ if ($result->num_rows > 0) {
     // output data of each row
 	echo "<table class='table'><thead class='thead-dark'><tr><th>Roll no</th><th>Name</th></tr></thead><tbody>";
     while($row = $result->fetch_assoc()) {
-		
+
         echo "<tr><td>".$row["rollno"]."</td><td>".$row["name"]."</td></tr>";
     }
 	echo "</tbody></table>";
@@ -129,7 +129,7 @@ $conn->close();
 ?>
 </div></div><br/>
 <div class="card">
-  <div class="card-body">  
+  <div class="card-body">
 <h1>Enter new student details</h1>
 Fields marked as <font color='red'>*</font> are mandatory
 <form action="#" method="post">
@@ -143,20 +143,14 @@ Fields marked as <font color='red'>*</font> are mandatory
 <br/>
 
 <div class="card">
-  <div class="card-body">  
+  <div class="card-body">
 <h2>
 Delete a Student record
 </h2>
 <form action="delete_stud.php" method="post">
 <div class='form-group'>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {
@@ -166,9 +160,9 @@ else
 {
 //echo "connected";
 
-} 
+}
 
-echo "<select name='select' class='form-control'>";	
+echo "<select name='select' class='form-control'>";
 $sql3 = mysqli_query($conn, "SELECT * From student ORDER BY rollno ASC");
 $row = mysqli_num_rows($sql3);
 
@@ -177,7 +171,7 @@ echo "<option value='".$row['rollno']."'>".$row['rollno']."</option>" ;
 }
 echo "</select>"
    //<input type="button" value="delete">
-   
+
 ?>
 <br/>
 <input type="submit" value="Delete"  class='btn btn-danger'>

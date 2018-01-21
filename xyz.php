@@ -7,7 +7,7 @@
     <title>Price Range</title>
 </head>
 <body>
-<?php 
+<?php
 error_reporting(0);
 ini_set('display_errors', 0);
     session_start();
@@ -38,7 +38,7 @@ ini_set('display_errors', 0);
       <li class="nav-item">
         <a href=new_student1.php class="nav-link">Student details</a>
       </li>
-      
+
     <li class="nav-item">
         <a href=consumption.php class="nav-link">New bill</a>
       </li>
@@ -48,9 +48,9 @@ ini_set('display_errors', 0);
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
       </li>
-		
+
 		</ul>
-  </div> 
+  </div>
 </nav>
 
 
@@ -66,7 +66,7 @@ ini_set('display_errors', 0);
   <div class="col-sm-6">
   Fields marked as <font color='red'>*</font> cannot be empty<br/>
 <div class="card">
-  <div class="card-body">  
+  <div class="card-body">
 <h2>
 Exsting Item details
 </h2>
@@ -74,18 +74,12 @@ Exsting Item details
 error_reporting(0);
 ini_set('display_errors', 0);
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 //echo "Connected successfully<br>";
 $itemName=$_POST["iname"];
 $iprice=$_POST["price"];
@@ -94,7 +88,7 @@ $iprice=$_POST["price"];
 //mysqli_query($db,$query_insert) or die('Error querying database');
 //mysqli_query($conn,$query_select);
 if ($itemName!="" && $iprice!="") {
-   
+
 $sql = "insert into item values('$itemName','$iprice')";
 
 
@@ -104,7 +98,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 }
-else 
+else
 {
 	//echo "Fields marked as <font color='red'>*</font> cannot be empty<br/>";
 }
@@ -115,7 +109,7 @@ if ($result->num_rows > 0) {
     // output data of each row
 	echo "<table class='table'><thead class='thead-dark'><tr><th>Item Name</th><th>Price</th></tr></thead><tbody>";
     while($row = $result->fetch_assoc()) {
-		
+
         echo "<tr><td>".$row["item_name"]."</td><td>".$row["price"]."</td></tr>";
     }
 	echo "</table>";
@@ -128,12 +122,12 @@ $conn->close();
 <br/>
 </div></div><br/>
 <div class="card">
-  <div class="card-body">  
+  <div class="card-body">
 <h1>Add a new item</h1>
 <form action="sample.php" method="post">
 <div class="form-group">
 <b>Name of the item<font color='red'>*</font></b>
-	
+
     <input type="text" name="iname" class="form-control"><br/><br/>
     <b>Price per item<font color='red'>*</font></b>
     <input type="number" name="price" class="form-control"><br/>
@@ -144,16 +138,10 @@ $conn->close();
 
 </div></div><br/>
 <div class="card">
-  <div class="card-body">  
+  <div class="card-body">
 <h1>Delete an item</h1>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {
@@ -163,10 +151,10 @@ else
 {
 //echo "connected";
 
-} 
+}
 echo "<form action='delete.php' method='post'>";
 echo "<div class='form-group'>";
-echo "<select name='select' class='form-control'>";	
+echo "<select name='select' class='form-control'>";
 $sql3 = mysqli_query($conn, "SELECT * From item");
 $row = mysqli_num_rows($sql3);
 
@@ -181,7 +169,7 @@ $conn->close();
 </div></div></div>
   <div class="col-sm-3"></div>
   </div>
-  
-  <br/><br/><br/><br/>	
+
+  <br/><br/><br/><br/>
 </body>
 </html>

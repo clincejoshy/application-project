@@ -8,7 +8,7 @@ Total Bill
 </title>
 </head>
 <body>
-<?php 
+<?php
 error_reporting(0);
 ini_set('display_errors', 0);
     session_start();
@@ -39,7 +39,7 @@ ini_set('display_errors', 0);
       <li class="nav-item">
         <a href=new_student1.php class="nav-link">Student details</a>
       </li>
-      
+
     <li class="nav-item">
         <a href=consumption.php class="nav-link">New bill</a>
       </li>
@@ -49,9 +49,9 @@ ini_set('display_errors', 0);
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
       </li>
-		
+
 		</ul>
-  </div> 
+  </div>
 </nav>
 
 
@@ -71,22 +71,16 @@ ini_set('display_errors', 0);
 <table style="width:100%" class='table'><thead class='thead-dark'>
   <tr>
     <th>rollno</th>
-    <th>name</th> 
+    <th>name</th>
     <th>total bill</th>
   </tr></thead><tbody>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 //echo "Connected successfully<br>";
 $sql = "SELECT * FROM student  ORDER BY rollno ASC";
 $result = $conn->query($sql);

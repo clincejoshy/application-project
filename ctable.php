@@ -1,11 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {

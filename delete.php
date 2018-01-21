@@ -1,16 +1,10 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 echo "Connected successfully<br>";
 $itemName=$_POST["select"];
 $sqld = "delete from item where item.item_name = '$itemName'";
