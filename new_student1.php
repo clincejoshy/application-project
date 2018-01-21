@@ -121,54 +121,5 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 </div></div><br/>
-<div class="card">
-  <div class="card-body">
-<h1>Enter new Student Details</h1>
-Fields marked as <font color='red'>*</font> are mandatory
-<form action="#" method="post">
-<b>Roll no<font color='red'>*</font></b>
-    <input type="number" name="rollno" class="form-control"><br/><b>Name<font color='red'>*</font></b>
-    <input type="text" name="name" class="form-control"><br/><b>Password<font color='red'>*</font></b>
-	<input type="password" name="password" class="form-control"><br/>
-    <input type="submit"  class='btn btn-primary'>
-</form>
-</div></div>
-<br/>
-
-<div class="card">
-  <div class="card-body">
-<h2>
-Delete a Student Record
-</h2>
-<form action="delete_stud.php" method="post">
-<div class='form-group'>
-<?php
-require("connect.php");
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-else
-{
-//echo "connected";
-
-}
-
-echo "<select name='select' class='form-control'>";
-$sql3 = mysqli_query($conn, "SELECT * From student ORDER BY rollno ASC");
-$row = mysqli_num_rows($sql3);
-
-while ($row = mysqli_fetch_array($sql3)){
-echo "<option value='".$row['rollno']."'>".$row['rollno']."</option>" ;
-}
-echo "</select>"
-   //<input type="button" value="delete">
-
-?>
-<br/>
-<input type="submit" value="Delete"  class='btn btn-danger'>
-</div></form>
-</div></div><br/><br/>
 </body>
 </html>

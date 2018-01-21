@@ -59,7 +59,7 @@ ini_set('display_errors', 0);
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-3">Total Bill</h1>
-    <p class="lead">The total bill details of all students are shown here</p>
+    <p class="lead">The total bill details of all the students are shown here</p>
   </div>
 </div>
 <div class="row">
@@ -70,9 +70,10 @@ ini_set('display_errors', 0);
 
 <table style="width:100%" class='table'><thead class='thead-dark'>
   <tr>
-    <th>rollno</th>
-    <th>name</th>
-    <th>total bill</th>
+    <th>Room Number</th>
+    <th>Admission Number</th>
+    <th>Name</th>
+    <th>Total Bill</th>
   </tr></thead><tbody>
 <?php
 require("connect.php");
@@ -90,7 +91,7 @@ if ($result->num_rows > 0) {
 
 while($row = $result->fetch_assoc()){
 $rollno=$row["rollno"];
-
+$roomno=$row["room"];
 $name=$row["name"];
 
 $sql1 = "SELECT sum(tprice) FROM sconsumption where rollno=$rollno";
@@ -102,6 +103,7 @@ if ($result1->num_rows > 0) {
 while($row1 = $result1->fetch_assoc()){
 $totalbill=$row1["sum(tprice)"];
 echo "<tr>";
+echo "    <td>$roomno</td>";
 echo "    <td>$rollno</td>";
 echo "   <td>$name</td>";
 echo "   <td>$totalbill</td>";

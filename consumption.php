@@ -82,11 +82,11 @@ else
 echo "connected";
 
 }
-$sql3 = mysqli_query($conn, "SELECT * From student ORDER BY rollno ASC");
+$sql3 = mysqli_query($conn, "SELECT * From student ORDER BY room ASC");
 $row = mysqli_num_rows($sql3);
 
 while ($row = mysqli_fetch_array($sql3)){
-echo "<option value='".$row['rollno']."'>".$row['rollno']."</option>" ;
+echo "<option value='".$row['rollno']."'>".$row['room']." - ".$row['name']."  (".$row['rollno'].")</option>" ;
 }
 echo "</select>";
 ?>
