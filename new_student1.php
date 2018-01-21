@@ -75,14 +75,7 @@ Exsting student details
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="mess";
-
-// Create connection
-$conn =mysqli_connect($servername, $username, $password,$db);
+require("connect.php");
 
 // Check connection
 if ($conn->connect_error) {
