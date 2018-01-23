@@ -105,11 +105,11 @@ else
 echo "connected";
 
 }
-$sql03 = mysqli_query($conn, "SELECT * From item");
+$sql03 = mysqli_query($conn, "SELECT * From item ORDER BY item_name ASC");
 $row = mysqli_num_rows($sql03);
 
 while ($row = mysqli_fetch_array($sql03)){
-echo "<option value='".$row['item_name']."'>".$row['item_name']."</option>" ;
+echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['price']."</option>" ;
 }
 ?>
 </select><br/><br/>
