@@ -17,7 +17,10 @@ ini_set('display_errors', 0);
     }
 ?>
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/multiple-select.css">
 <script src="js/jquery.js"></script>
+<script src="js/multiple-select.js"></script>
+
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.js"></script>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
@@ -68,31 +71,10 @@ ini_set('display_errors', 0);
   <div class="card-body">
 <form action="ctable.php" method="post">
 <div class='form-group'>
-<b>Select the Student Admission No</b>
-<select name="roll_no" class='form-control'>
-<?php
-require("connect.php");
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-else
-{
-echo "connected";
 
-}
-$sql3 = mysqli_query($conn, "SELECT * From student ORDER BY room ASC");
-$row = mysqli_num_rows($sql3);
-
-while ($row = mysqli_fetch_array($sql3)){
-echo "<option value='".$row['rollno']."'>".$row['room']." - ".$row['name']."  (".$row['rollno'].")</option>" ;
-}
-echo "</select>";
-?>
-<br/><br/>
-<b>Select item</b>
-<select name="item" class='form-control'>
+<b>Select item</b><br/>
+<select multiple="multiple" name="item">
 <?php
 require("connect.php");
 
@@ -113,9 +95,44 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
 }
 ?>
 </select><br/><br/>
+
+<b>Select the Student Admission No</b><br/>
+<script>
+        $("select").multipleSelect({
+            single: true
+        });
+    </script>
+<select multiple="multiple" name="roll_no">
+
+<?php
+require("connect.php");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+else
+{
+echo "connected";
+
+}
+$sql3 = mysqli_query($conn, "SELECT * From student ORDER BY room ASC");
+$row = mysqli_num_rows($sql3);
+
+while ($row = mysqli_fetch_array($sql3)){
+echo "<option value='".$row['rollno']."'>\t".$row['room']." - ".$row['name']."  (".$row['rollno'].")</option>" ;
+}
+echo "</select>";
+?>
+<br/><br/>
     <b>Enter the quantity consumed</b>
     <input type="number" name="quantity" class="form-control"><br/><br/>
     <input type="submit" value="Submit" class='btn btn-primary'>
 </div></form>
 </body>
+<script>
+        $("select").multipleSelect({
+            filter: true
+        });
+    </script>
 </html>
