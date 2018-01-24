@@ -69,7 +69,7 @@
   <div class="col-sm-6">
 <div class="card">
   <div class="card-body">
-<form action="ctable.php" method="post">
+<form action="ctable.php" method="post" onsubmit="return confirm('Are you sure you want to submit this bill?');">
 <div class='form-group'>
 
 
