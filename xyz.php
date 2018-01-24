@@ -7,7 +7,7 @@
     <title>Price Range</title>
 </head>
 <body>
-<?php
+<!--?php
 error_reporting(0);
 ini_set('display_errors', 0);
     session_start();
@@ -15,7 +15,7 @@ ini_set('display_errors', 0);
     {
         header("location:admin.php");
     }
-?>
+?-->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.js"></script>
 <script src="js/popper.js"></script>
@@ -71,8 +71,8 @@ ini_set('display_errors', 0);
 Exsting Item details
 </h2>
 <?php
-error_reporting(0);
-ini_set('display_errors', 0);
+//error_reporting(0);
+//ini_set('display_errors', 0);
 
 require("connect.php");
 
