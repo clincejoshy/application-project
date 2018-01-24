@@ -29,5 +29,5 @@ $sql="insert into sconsumption values('$rollno','$date','$quantity'*'$price','$n
 $conn->query($sql);
 }
 $conn->close();
-//header('Location: consumption.php');
+header('Location: consumption.php');
 ?>

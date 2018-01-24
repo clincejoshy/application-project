@@ -130,7 +130,7 @@ echo "</select>";
     <input type="submit" value="Submit" class='btn btn-primary' id="getSelectsBtn">
 </div></form>
  <script>
-        $("select").multipleSelect();
+        $("select").multipleSelect({filter: true});
         $("#setSelectsBtn").click(function() {
             $("select").multipleSelect("setSelects", [1, 3]);
         });
