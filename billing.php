@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
     // output data of each row
 	echo "<table  class='table'><thead class='thead-dark'><tr><th>Date</th><th>Item</th><th>Cost</th></tr></thead><tbody>";
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" .$row["DATE_FORMAT(date,'%D-%M-%Y')"]. "</td> <td>" . $row["itemname"]. "</td> <td>" . $row["tprice"]. "</td></tr><br>" ;
+        echo "<tr><td>" .$row["date"]. "</td> <td>" . $row["itemname"]. "</td> <td>" . $row["tprice"]. "</td></tr><br>" ;
 
 
     }
