@@ -8,8 +8,8 @@
 </head>
 <body>
 <?php
-error_reporting(0);
-ini_set('display_errors', 0);
+//error_reporting(0);
+//ini_set('display_errors', 0);
     session_start();
     if($_SESSION["role"]!="admin")
     {
@@ -95,7 +95,7 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
 }
 ?>
 </select><br/><br/>
-
+<p>Date: <input type="text" id="datepicker" name="date"></p>
 <b>Select the Student Admission No</b><br/>
 <script>
         $("select").multipleSelect({
@@ -135,4 +135,13 @@ echo "</select>";
             filter: true
         });
     </script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
 </html>
