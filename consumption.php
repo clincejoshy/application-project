@@ -74,7 +74,7 @@
 
 
 <b>Select item</b><br/>
-<select multiple="multiple" name="item">
+<select name="item">
 <?php
 require("connect.php");
 
@@ -102,7 +102,7 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
             single: true
         });
     </script>
-<select multiple="multiple" name="roll_no">
+<select multiple="multiple" name="roll_no[]" id="roll_no">
 
 <?php
 require("connect.php");
@@ -127,9 +127,21 @@ echo "</select>";
 <br/><br/>
     <b>Enter the quantity consumed</b>
     <input type="number" name="quantity" class="form-control"><br/><br/>
-    <input type="submit" value="Submit" class='btn btn-primary'>
+    <input type="submit" value="Submit" class='btn btn-primary' id="getSelectsBtn">
 </div></form>
+ <script>
+        $("select").multipleSelect();
+        $("#setSelectsBtn").click(function() {
+            $("select").multipleSelect("setSelects", [1, 3]);
+        });
+        $("#getSelectsBtn").click(function() {
+			
+            alert("Selected values: " + $('#roll_no').multipleSelect("getSelects"));
+            alert("Selected texts: " + $('#roll_no').multipleSelect("getSelects", "text"));
+        });
+    </script>
 </body>
+
 <script>
         $("select").multipleSelect({
             filter: true
