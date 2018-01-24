@@ -26,5 +26,5 @@ $date=$_POST["date"];
 $sql="insert into sconsumption values('$rollno','$date','$quantity'*'$price','$name','$itemname')";
 $conn->query($sql);
 $conn->close();
-//header('Location: consumption.php');
+header('Location: consumption.php');
 ?>
