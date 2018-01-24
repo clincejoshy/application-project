@@ -153,7 +153,9 @@ echo "</select>";
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
   $( function() {
+	  var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
     $( "#datepicker" ).datepicker();
+	
   } );
   </script>
 </html>
