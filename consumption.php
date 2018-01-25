@@ -132,7 +132,7 @@ echo "</select>";
 </body>
 
 <!-- validation function-->
-<script>
+<!--script>
 
 	
 $("#getSelectsBtn").click(function(event){
@@ -161,7 +161,7 @@ var valid = true;
 
 
 
-</script>
+</script-->
 
 <script>
         $("select").multipleSelect({
