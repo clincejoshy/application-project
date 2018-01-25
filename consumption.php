@@ -77,7 +77,7 @@
                 Confirm Submit
             </div>
             <div class="modal-body">
-                Are you sure you want to submit the following details?
+                Are you sure to submit the following details?
                 <div id="modal_content">
 				</div>
             </div>
