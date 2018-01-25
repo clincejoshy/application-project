@@ -69,12 +69,12 @@
   <div class="col-sm-6">
 <div class="card">
   <div class="card-body">
-<form action="ctable.php" method="post" onsubmit="return confirm('Are you sure you want to submit this bill?');">
+<form action="ctable.php" method="post" >
 <div class='form-group'>
 
 
 <b>Select item</b><br/>
-<select name="item">
+<select name="item" id="item">
 <?php
 require("connect.php");
 
@@ -84,7 +84,7 @@ if ($conn->connect_error) {
 }
 else
 {
-echo "connected";
+//echo "connected";
 
 }
 $sql03 = mysqli_query($conn, "SELECT * From item ORDER BY item_name ASC");
@@ -113,7 +113,7 @@ if ($conn->connect_error) {
 }
 else
 {
-echo "connected";
+//echo "connected";
 
 }
 $sql3 = mysqli_query($conn, "SELECT * From student ORDER BY room ASC");
@@ -129,18 +129,39 @@ echo "</select>";
     <input type="number" name="quantity" class="form-control"><br/><br/>
     <input type="submit" value="Submit" class='btn btn-primary' id="getSelectsBtn">
 </div></form>
- <script>
-        $("select").multipleSelect({filter: true});
-        $("#setSelectsBtn").click(function() {
-            $("select").multipleSelect("setSelects", [1, 3]);
-        });
-        $("#getSelectsBtn").click(function() {
-			
-            alert("Selected values: " + $('#roll_no').multipleSelect("getSelects"));
-            alert("Selected texts: " + $('#roll_no').multipleSelect("getSelects", "text"));
-        });
-    </script>
 </body>
+
+<!-- validation function-->
+<script>
+
+	
+$("#getSelectsBtn").click(function(event){
+    event.preventDefault();
+    var searchIDs = $("#roll_no option:selected").map(function(){
+      return $(this).text();
+    }).get(); // <----
+    console.log(searchIDs);
+	//alert(searchIDs);
+	var itemname = document.getElementById("item");
+var strUser = itemname.options[itemname.selectedIndex].value;
+	return confirm('Selected item is '+strUser+'     Selected roll numbers are '+searchIDs+'. Submit the bill?');
+});
+function validate(form) {
+
+    // validation code here ...
+var valid = true;
+    if(!valid) {
+        alert('Please correct the errors in the form!');
+        return false;
+    }
+    else {
+        return confirm('Do you really want to submit the form?');
+    }
+}
+
+
+
+</script>
 
 <script>
         $("select").multipleSelect({
