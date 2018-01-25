@@ -69,7 +69,26 @@
   <div class="col-sm-6">
 <div class="card">
   <div class="card-body">
-<form action="ctable.php" method="post" >
+
+<div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Confirm Submit
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit the following details?
+                <div id="modal_content">
+				</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button onclick="senddata();" id="submit" class="btn btn-success success">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+<form onsubmit=" event.preventDefault(); validate();" id="data_form" action="ctable.php" method="post">
 <div class='form-group'>
 
 
@@ -126,17 +145,48 @@ echo "</select>";
 ?>
 <br/><br/>
     <b>Enter the quantity consumed</b>
+	
+	
     <input type="number" name="quantity" class="form-control"><br/><br/>
-    <input type="submit" value="Submit" class='btn btn-primary' id="getSelectsBtn">
+    <!--input type="submit" value="Submit" class='btn btn-primary' id="getSelectsBtn" -->
+	<input type="submit" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-primary" />
+	<!--input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" /-->
+
 </div></form>
 </body>
 
 <!-- validation function-->
-<!--script>
+<script>
 
+$('#submitBtn').click(function() {
+     /* when the button in the form, display the entered values in the modal */
+     $('#lname').text($('#lastname').val());
+     $('#fname').text($('#firstname').val());
+});
+
+$('#submit').click(function(){
+     /* when the submit button in the modal is clicked, submit the form */
+    //alert('submitting');
+    //$('#data_form').submit();
+});
 	
-$("#getSelectsBtn").click(function(event){
-    event.preventDefault();
+//$("#getSelectsBtn").click(function(event){
+  //  event.preventDefault();
+    //var searchIDs = $("#roll_no option:selected").map(function(){
+      //return $(this).text();
+    //}).get(); // <----
+    //console.log(searchIDs);
+	//alert(searchIDs);
+	//var itemname = document.getElementById("item");
+//var strUser = itemname.options[itemname.selectedIndex].value;
+	//return confirm('Selected item is '+strUser+'     Selected roll numbers are '+searchIDs+'. Submit the bill?');
+//});
+function validate(form) {
+
+    // validation code here ...
+
+		
+		//event.preventDefault();
     var searchIDs = $("#roll_no option:selected").map(function(){
       return $(this).text();
     }).get(); // <----
@@ -144,24 +194,39 @@ $("#getSelectsBtn").click(function(event){
 	//alert(searchIDs);
 	var itemname = document.getElementById("item");
 var strUser = itemname.options[itemname.selectedIndex].value;
-	return confirm('Selected item is '+strUser+'     Selected roll numbers are '+searchIDs+'. Submit the bill?');
-});
-function validate(form) {
+console.log(strUser);
 
-    // validation code here ...
-var valid = true;
-    if(!valid) {
-        alert('Please correct the errors in the form!');
-        return false;
+ var html2 = "<br/><h5>Item name is "+strUser+"</h5><br/><table  class='table'><th>Name of students</th>";
+    for (var i = 0; i < searchIDs.length; i++) {
+        html2+="<tr>";
+        html2+="<td>"+searchIDs[i]+"</td>";
+        html2+="</tr>";
+
     }
-    else {
-        return confirm('Do you really want to submit the form?');
-    }
+    html2+="</table>";
+document.getElementById("modal_content").innerHTML = html2;
+//$('#confirm-submit').modal('show'); 
+$("#submitBtn").click()
+
+
+//document.getElementById("modal_content").innerHTML=
+	//return false;
+	 //return confirm('Selected item is '+strUser+'     Selected roll numbers are '+searchIDs+'. Submit the bill?');
+		
+		
+        //return confirm('Do you really want to submit the form?');
+    
 }
 
+//send data
+function senddata()
+{
+	
+	//alert("hii");
+	document.getElementById("data_form").submit();// Form submission
+}
 
-
-</script-->
+</script>
 
 <script>
         $("select").multipleSelect({
