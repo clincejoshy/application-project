@@ -70,7 +70,7 @@ ini_set('display_errors', 0);
 <div class="card">
   <div class="card-body">
 <h2>
-Exsting Student Details
+Existing Student Details
 </h2>
 <?php
 error_reporting(0);

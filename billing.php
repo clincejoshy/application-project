@@ -74,7 +74,7 @@ $studname=$_POST["select"];
 if ($conn->query($sqld) === FALSE){
     //echo "" . $sqld . "<br>" . $conn->error;
 }
-$sql1 = "SELECT *,DATE_FORMAT(date,'%D-%M-%Y') FROM sconsumption where rollno=".$_SESSION['id'];
+$sql1 = "SELECT * FROM sconsumption where rollno=".$_SESSION['id'];
 $sql2 = "select sum(tprice) from sconsumption where rollno=".$_SESSION['id'];
 $result = $conn->query($sql1);
 $result1 = $conn->query($sql2);
@@ -86,14 +86,14 @@ if ($result->num_rows > 0) {
     // output data of each row
 	echo "<table  class='table'><thead class='thead-dark'><tr><th>Date</th><th>Item</th><th>Cost</th></tr></thead><tbody>";
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" .$row["DATE_FORMAT(date,'%D-%M-%Y')"]. "</td> <td>" . $row["itemname"]. "</td> <td>" . $row["tprice"]. "</td></tr><br>" ;
+        echo "<tr><td>" .$row["date"]. "</td> <td>" . $row["itemname"]. "</td> <td>" . $row["tprice"]. "</td></tr><br>" ;
 
 
     }
 	echo "</tbody></table>";
 	echo "<div class='alert alert-primary text-right' role='alert'>Total price is ". $row1["sum(tprice)"]."</div>";
 } else {
-    echo "Go and eat. Not took anything!<br> Total amount is 0";
+    echo "Go and eat. Haven't took anything!<br> Total amount is 0";
 }
 //header('Location:xyz.php');
 $conn->close();

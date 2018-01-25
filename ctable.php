@@ -1,5 +1,6 @@
 <?php
 require("connect.php");
+print_r($_POST["roll_no"]);
 
 // Check connection
 if ($conn->connect_error) {
@@ -10,7 +11,9 @@ else
 echo "connected";
 
 }
-$rollno=$_POST["roll_no"];
+foreach ($_POST['roll_no'] as $rollno)
+{
+//$rollno=$_POST["roll_no"];
 $sql2="select name from student where rollno='$rollno'";
 $result1 = $conn->query($sql2);
 $row2 = $result1->fetch_assoc();
@@ -21,8 +24,10 @@ $sql1="select price from item where item_name='$itemname'";
 $result = $conn->query($sql1);
 $row = $result->fetch_assoc();
 $price=$row["price"];
-$sql="insert into sconsumption values('$rollno',curdate(),'$quantity'*'$price','$name','$itemname')";
+$date=$_POST["date"];
+$sql="insert into sconsumption values('$rollno','$date','$quantity'*'$price','$name','$itemname')";
 $conn->query($sql);
+}
 $conn->close();
 header('Location: consumption.php');
 ?>

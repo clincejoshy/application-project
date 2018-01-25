@@ -68,7 +68,7 @@ ini_set('display_errors', 0);
 <div class="card">
   <div class="card-body">
 <h2>
-Exsting Item details
+Existing Item details
 </h2>
 <?php
 //error_reporting(0);
@@ -102,7 +102,7 @@ else
 {
 	//echo "Fields marked as <font color='red'>*</font> cannot be empty<br/>";
 }
-$sql1 = "SELECT * FROM item";
+$sql1 = "SELECT * FROM item ORDER BY item_name ASC ";
 $result = $conn->query($sql1);
 
 if ($result->num_rows > 0) {
