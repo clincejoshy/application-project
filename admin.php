@@ -65,7 +65,7 @@
 			                    <form role="form" action="php/login1.php" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">User Name</label>
-			                        	<input type="text" name="email" placeholder="Admission No" class="form-username form-control" id="form-username">
+			                        	<input type="text" name="email" placeholder="User name" class="form-username form-control" id="form-username">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Password</label>

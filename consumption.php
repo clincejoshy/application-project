@@ -118,7 +118,8 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
 <b>Select the Student Admission No</b><br/>
 <script>
         $("select").multipleSelect({
-            single: true
+            single: true,
+			filter: true
         });
     </script>
 <select multiple="multiple" name="roll_no[]" id="roll_no">
