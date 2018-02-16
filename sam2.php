@@ -75,7 +75,7 @@ ini_set('display_errors', 0);
   <div class="form-group">
     <!--label for="exampleFormControlSelect1">Select Month</label-->
     <select class="form-control" id="month_select" name="month_select">
-	  <option selected>Select a month</option>
+	  <option selected>Month</option>
       <option value="01">January</option>
       <option value="02">February</option>
       <option value="03">March</option>
@@ -88,6 +88,22 @@ ini_set('display_errors', 0);
 	  <option value="10">October</option>
 	  <option value="11">November</option>
 	  <option value="12">December</option>
+    </select>
+	<br/>
+	<select class="form-control" id="year_select" name="year_select">
+	  
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+	  <option value="2023">2023</option>
+	  <option value="2024">2024</option>
+	  <option value="2025">2025</option>
+	  <option value="2026">2026</option>
+	  <option value="2027">2027</option>
+	  <option value="2028">2028</option>
+	  <option value="2029">2029</option>
     </select>
   </div>
   <input type="submit" class="btn btn-primary">
@@ -110,6 +126,7 @@ if ($conn->connect_error) {
 }
 //echo "Connected successfully<br>";
 $month = $_GET['month_select'];
+$year = $_GET['year_select'];
 $sql = "SELECT * FROM student  ORDER BY rollno ASC";
 $result = $conn->query($sql);
 
@@ -121,7 +138,7 @@ $rollno=$row["rollno"];
 $roomno=$row["room"];
 $name=$row["name"];
 
-$sql1 = "SELECT sum(tprice) FROM sconsumption where rollno=$rollno AND date like '__-".$month."-____'";
+$sql1 = "SELECT sum(tprice) FROM sconsumption where rollno=$rollno AND date like '__-".$month."-".$year."'";
 $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) {
     // output data of each row
