@@ -67,7 +67,33 @@ ini_set('display_errors', 0);
   <div class="col-sm-6">
 <div class="card">
   <div class="card-body">
-
+  <!--?php
+  echo "<pre>"; echo $_GET["month_select"];  echo "</pre>";
+  ?-->
+<form action="sam2.php" method="GET">
+  
+  <div class="form-group">
+    <!--label for="exampleFormControlSelect1">Select Month</label-->
+    <select class="form-control" id="month_select" name="month_select">
+	  <option selected>Select a month</option>
+      <option value="01">January</option>
+      <option value="02">February</option>
+      <option value="03">March</option>
+      <option value="04">April</option>
+      <option value="05">May</option>
+	  <option value="06">June</option>
+	  <option value="07">July</option>
+	  <option value="08">August</option>
+	  <option value="09">September</option>
+	  <option value="10">October</option>
+	  <option value="11">November</option>
+	  <option value="12">December</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary">
+  
+</form>
+<br/>
 <table style="width:100%" class='table'><thead class='thead-dark'>
   <tr>
     <th>Room Number</th>
@@ -83,6 +109,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 //echo "Connected successfully<br>";
+$month = $_GET['month_select'];
 $sql = "SELECT * FROM student  ORDER BY rollno ASC";
 $result = $conn->query($sql);
 
@@ -94,7 +121,7 @@ $rollno=$row["rollno"];
 $roomno=$row["room"];
 $name=$row["name"];
 
-$sql1 = "SELECT sum(tprice) FROM sconsumption where rollno=$rollno";
+$sql1 = "SELECT sum(tprice) FROM sconsumption where rollno=$rollno AND date like '__-".$month."-____'";
 $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) {
     // output data of each row
