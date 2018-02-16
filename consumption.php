@@ -115,11 +115,11 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
 ?>
 </select><br/><br/>
 <p>Date: <input type="text" id="datepicker" name="date"></p>
-<b>Select the Student Admission No</b><br/>
+<b>Select the Student Room Number or Admission No</b><br/>
 <script>
         $("select").multipleSelect({
             single: true,
-			filter: true
+            width: '100%'
         });
     </script>
 <select multiple="multiple" name="roll_no[]" id="roll_no">
@@ -146,8 +146,8 @@ echo "</select>";
 ?>
 <br/><br/>
     <b>Enter the quantity consumed</b>
-	
-	
+
+
     <input type="number" name="quantity" class="form-control"><br/><br/>
     <!--input type="submit" value="Submit" class='btn btn-primary' id="getSelectsBtn" -->
 	<input type="submit" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-primary" />
@@ -170,7 +170,7 @@ $('#submit').click(function(){
     //alert('submitting');
     //$('#data_form').submit();
 });
-	
+
 //$("#getSelectsBtn").click(function(event){
   //  event.preventDefault();
     //var searchIDs = $("#roll_no option:selected").map(function(){
@@ -186,7 +186,7 @@ function validate(form) {
 
     // validation code here ...
 
-		
+
 		//event.preventDefault();
     var searchIDs = $("#roll_no option:selected").map(function(){
       return $(this).text();
@@ -206,23 +206,23 @@ console.log(strUser);
     }
     html2+="</table>";
 document.getElementById("modal_content").innerHTML = html2;
-//$('#confirm-submit').modal('show'); 
+//$('#confirm-submit').modal('show');
 $("#submitBtn").click()
 
 
 //document.getElementById("modal_content").innerHTML=
 	//return false;
 	 //return confirm('Selected item is '+strUser+'     Selected roll numbers are '+searchIDs+'. Submit the bill?');
-		
-		
+
+
         //return confirm('Do you really want to submit the form?');
-    
+
 }
 
 //send data
 function senddata()
 {
-	
+
 	//alert("hii");
 	document.getElementById("data_form").submit();// Form submission
 }
@@ -231,7 +231,8 @@ function senddata()
 
 <script>
         $("select").multipleSelect({
-            filter: true
+            filter: true,
+            width: '100%'
         });
     </script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -242,7 +243,7 @@ function senddata()
   $( function() {
 	  var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
     $( "#datepicker" ).datepicker();
-	
+
   } );
   </script>
 </html>

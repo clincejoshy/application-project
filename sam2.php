@@ -71,7 +71,7 @@ ini_set('display_errors', 0);
   echo "<pre>"; echo $_GET["month_select"];  echo "</pre>";
   ?-->
 <form action="sam2.php" method="GET">
-  
+
   <div class="form-group">
     <!--label for="exampleFormControlSelect1">Select Month</label-->
     <select class="form-control" id="month_select" name="month_select">
@@ -91,7 +91,7 @@ ini_set('display_errors', 0);
     </select>
 	<br/>
 	<select class="form-control" id="year_select" name="year_select">
-	  
+
       <option value="2018">2018</option>
       <option value="2019">2019</option>
       <option value="2020">2020</option>
@@ -107,7 +107,7 @@ ini_set('display_errors', 0);
     </select>
   </div>
   <input type="submit" class="btn btn-primary">
-  
+
 </form>
 <br/>
 <table style="width:100%" class='table'><thead class='thead-dark'>
