@@ -73,6 +73,12 @@ ini_set('display_errors', 0);
 <form action="sam2.php" method="GET">
   
   <div class="form-group">
+	<select class="form-control" id="hostel_select" name="hostel_select">
+	  
+      <option value="01">MH 1</option>
+      <option value="02">MH 2</option>
+      <option value="03">MH 3</option>
+    </select><br/>
     <!--label for="exampleFormControlSelect1">Select Month</label-->
     <select class="form-control" id="month_select" name="month_select">
 	  <option selected>Month</option>
@@ -127,7 +133,8 @@ if ($conn->connect_error) {
 //echo "Connected successfully<br>";
 $month = $_GET['month_select'];
 $year = $_GET['year_select'];
-$sql = "SELECT * FROM student  ORDER BY rollno ASC";
+$hostel = $_GET['hostel_select'];
+$sql = "SELECT * FROM student WHERE hostel=".$hostel." ORDER BY rollno ASC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

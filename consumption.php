@@ -90,8 +90,13 @@
 </div>
 <form onsubmit=" event.preventDefault(); validate();" id="data_form" action="ctable.php" method="post">
 <div class='form-group'>
-
-
+<b>Select Hostel</b><br/>
+<select name="hostel">
+<option value="01">1</option>
+<option value="02">2</option>
+<option value="03">3</option>
+</select>
+<br/>
 <b>Select item</b><br/>
 <select name="item" id="item">
 <?php
