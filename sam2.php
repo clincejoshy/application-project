@@ -78,6 +78,7 @@ ini_set('display_errors', 0);
       <option value="01">MH 1</option>
       <option value="02">MH 2</option>
       <option value="03">MH 3</option>
+	  <option value="04">LH</option>
     </select><br/>
     <!--label for="exampleFormControlSelect1">Select Month</label-->
     <select class="form-control" id="month_select" name="month_select">
