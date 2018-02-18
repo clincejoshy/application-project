@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -74,7 +74,7 @@ ini_set('display_errors', 0);
 
   <div class="form-group">
 	<select class="form-control" id="hostel_select" name="hostel_select">
-	  
+
       <option value="01">MH 1</option>
       <option value="02">MH 2</option>
       <option value="03">MH 3</option>
