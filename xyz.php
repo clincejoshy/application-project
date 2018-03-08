@@ -7,7 +7,7 @@
     <title>Price Range</title>
 </head>
 <body>
-<!--?php
+<?php
 error_reporting(0);
 ini_set('display_errors', 0);
     session_start();
@@ -15,7 +15,7 @@ ini_set('display_errors', 0);
     {
         header("location:admin.php");
     }
-?-->
+?>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.js"></script>
 <script src="js/popper.js"></script>
@@ -44,6 +44,9 @@ ini_set('display_errors', 0);
       </li>
 	<li class="nav-item">
 		<a href=sam2.php class="nav-link">Total Bill</a>
+		</li>
+		<li class="nav-item">
+		<a href=datebill.php class="nav-link">View Bill by date</a>
 		</li>
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>

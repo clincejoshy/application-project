@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>
-Total Bill
+View bill by Date
 </title>
 </head>
 <body>
@@ -44,10 +44,10 @@ ini_set('display_errors', 0);
         <a href=consumption.php class="nav-link">New Bill</a>
       </li>
 	<li class="nav-item">
-		<a href=sam2.php class="nav-link active">Total Bill</a>
+		<a href=sam2.php class="nav-link">Total Bill</a>
 		</li>
 		<li class="nav-item">
-		<a href=datebill.php class="nav-link">View Bill by date</a>
+		<a href=datebill.php class="nav-link active">View Bill by date</a>
 		</li>
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
@@ -61,8 +61,8 @@ ini_set('display_errors', 0);
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-3">Total Bill</h1>
-    <p class="lead">The total bill details of all the students are shown here</p>
+    <h1 class="display-3">View Bill by date</h1>
+    <p class="lead">The bill details of all the students according to date are shown here</p>
   </div>
 </div>
 <div class="row">
@@ -73,7 +73,7 @@ ini_set('display_errors', 0);
   <!--?php
   echo "<pre>"; echo $_GET["month_select"];  echo "</pre>";
   ?-->
-<form action="sam2.php" method="GET">
+<form action="datebill.php" method="GET">
 
   <div class="form-group">
 	<select class="form-control" id="hostel_select" name="hostel_select">
@@ -83,8 +83,9 @@ ini_set('display_errors', 0);
       <option value="03">MH 3</option>
 	  <option value="04">LH</option>
     </select><br/>
+	<p>Date: <input type="text" id="datepicker" name="date" required></p>
     <!--label for="exampleFormControlSelect1">Select Month</label-->
-    <select class="form-control" id="month_select" name="month_select">
+    <!--select class="form-control" id="month_select" name="month_select">
 	  <option selected>Month</option>
       <option value="01">January</option>
       <option value="02">February</option>
@@ -114,7 +115,7 @@ ini_set('display_errors', 0);
 	  <option value="2027">2027</option>
 	  <option value="2028">2028</option>
 	  <option value="2029">2029</option>
-    </select>
+    </select-->
   </div>
   <input type="submit" class="btn btn-primary">
 
@@ -125,7 +126,7 @@ ini_set('display_errors', 0);
     <th>Room Number</th>
     <th>Admission Number</th>
     <th>Name</th>
-    <th>Total Bill</th>
+    <th>Item</th>
   </tr></thead><tbody>
 <?php
 require("connect.php");
@@ -135,8 +136,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 //echo "Connected successfully<br>";
-$month = $_GET['month_select'];
-$year = $_GET['year_select'];
+$date1 = $_GET['date'];
 $hostel = $_GET['hostel_select'];
 $sql = "SELECT * FROM student WHERE hostel=".$hostel." ORDER BY rollno ASC";
 $result = $conn->query($sql);
@@ -149,14 +149,14 @@ $rollno=$row["rollno"];
 $roomno=$row["room"];
 $name=$row["name"];
 
-$sql1 = "SELECT sum(tprice) FROM sconsumption where rollno=$rollno AND date like '__-".$month."-".$year."'";
+$sql1 = "SELECT itemname FROM sconsumption where rollno=$rollno AND date='".$date1."'";
 $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) {
     // output data of each row
 
 
 while($row1 = $result1->fetch_assoc()){
-$totalbill=$row1["sum(tprice)"];
+$totalbill=$row1["itemname"];
 echo "<tr>";
 echo "    <td>$roomno</td>";
 echo "    <td>$rollno</td>";
@@ -164,7 +164,7 @@ echo "   <td>$name</td>";
 echo "   <td>$totalbill</td>";
  echo "</tr>";}
 }else{
-echo "0 Student Records";
+//echo "0 Student Records";
 }
 
   }
@@ -174,9 +174,18 @@ echo "0 Student Records";
 $conn->close();
 ?>
 
+<script>
+  $( function() {
+	  var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+    $( "#datepicker" ).datepicker();
 
+  } );
+  </script>
 </tbody>
 </table>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>

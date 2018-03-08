@@ -46,6 +46,9 @@ ini_set('display_errors', 0);
 	<li class="nav-item">
 		<a href=sam2.php class="nav-link">Total Bill</a>
 		</li>
+		<li class="nav-item">
+		<a href=datebill.php class="nav-link">View Bill by date</a>
+		</li>
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
       </li>

@@ -48,6 +48,9 @@
 	<li class="nav-item">
 		<a href=sam2.php class="nav-link">Total Bill</a>
 		</li>
+		<li class="nav-item">
+		<a href=datebill.php class="nav-link">View Bill by date</a>
+		</li>
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
       </li>
@@ -98,7 +101,7 @@
 </select-->
 <br/>
 <b>Select item</b><br/>
-<select name="item" id="item">
+<select name="item" id="item" required>
 <?php
 require("connect.php");
 
@@ -119,7 +122,7 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
 }
 ?>
 </select><br/><br/>
-<p>Date: <input type="text" id="datepicker" name="date"></p>
+<p>Date: <input type="text" id="datepicker" name="date" required></p>
 <b>Select the Student Room Number or Admission No</b><br/>
 <script>
         $("select").multipleSelect({
@@ -127,7 +130,7 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
             width: '100%'
         });
     </script>
-<select multiple="multiple" name="roll_no[]" id="roll_no">
+<select multiple="multiple" name="roll_no[]" id="roll_no" required>
 
 <?php
 require("connect.php");
@@ -153,7 +156,7 @@ echo "</select>";
     <b>Enter the quantity consumed</b>
 
 
-    <input type="number" name="quantity" class="form-control"><br/><br/>
+    <input type="number" name="quantity" class="form-control" required><br/><br/>
     <!--input type="submit" value="Submit" class='btn btn-primary' id="getSelectsBtn" -->
 	<input type="submit" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-primary" />
 	<!--input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" /-->
