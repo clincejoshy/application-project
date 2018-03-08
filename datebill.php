@@ -121,12 +121,13 @@ ini_set('display_errors', 0);
 
 </form>
 <br/>
-<table style="width:100%" class='table'><thead class='thead-dark'>
+<table class='table'><thead class='thead-dark'>
   <tr>
     <th>Room Number</th>
     <th>Admission Number</th>
     <th>Name</th>
     <th>Item</th>
+	<th>Total Bill</th>
   </tr></thead><tbody>
 <?php
 require("connect.php");
@@ -149,7 +150,7 @@ $rollno=$row["rollno"];
 $roomno=$row["room"];
 $name=$row["name"];
 
-$sql1 = "SELECT itemname FROM sconsumption where rollno=$rollno AND date='".$date1."'";
+$sql1 = "SELECT itemname,tprice FROM sconsumption where rollno=$rollno AND date='".$date1."'";
 $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) {
     // output data of each row
@@ -157,11 +158,13 @@ if ($result1->num_rows > 0) {
 
 while($row1 = $result1->fetch_assoc()){
 $totalbill=$row1["itemname"];
+$tprice=$row1["tprice"];
 echo "<tr>";
 echo "    <td>$roomno</td>";
 echo "    <td>$rollno</td>";
 echo "   <td>$name</td>";
 echo "   <td>$totalbill</td>";
+echo "   <td>$tprice</td>";
  echo "</tr>";}
 }else{
 //echo "0 Student Records";
@@ -183,6 +186,7 @@ $conn->close();
   </script>
 </tbody>
 </table>
+</div></div></div><div class="col-sm-3"></div></div>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
