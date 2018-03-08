@@ -20,6 +20,11 @@ $row2 = $result1->fetch_assoc();
 $name=$row2["name"];
 $itemname=$_POST["item"];
 $quantity=$_POST["quantity"];
+if ($quantity == '')
+{
+	
+	$quantity=1;
+}
 $sql1="select price from item where item_name='$itemname'";
 $result = $conn->query($sql1);
 $row = $result->fetch_assoc();
