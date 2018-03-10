@@ -115,7 +115,7 @@ if ($conn->connect_error) {
 $month = $_GET['month_select'];
 $year = $_GET['year_select'];
 $sql1 = "SELECT * FROM sconsumption WHERE rollno=".$_SESSION['id']." AND date like '__-".$month."-".$year."' order by date";
-$sql2 = "SELECT sum(tprice) from sconsumption where rollno=".$_SESSION['id'];
+$sql2 = "SELECT sum(tprice) from sconsumption WHERE rollno=".$_SESSION['id']." AND date like '__-".$month."-".$year."'";
 $result = $conn->query($sql1);
 $result1 = $conn->query($sql2);
 $result3 = $conn->query($sql1);
