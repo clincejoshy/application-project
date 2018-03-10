@@ -84,38 +84,6 @@ ini_set('display_errors', 0);
 	  <option value="04">LH</option>
     </select><br/>
 	<p>Date: <input type="text" id="datepicker" name="date" required></p>
-    <!--label for="exampleFormControlSelect1">Select Month</label-->
-    <!--select class="form-control" id="month_select" name="month_select">
-	  <option selected>Month</option>
-      <option value="01">January</option>
-      <option value="02">February</option>
-      <option value="03">March</option>
-      <option value="04">April</option>
-      <option value="05">May</option>
-	  <option value="06">June</option>
-	  <option value="07">July</option>
-	  <option value="08">August</option>
-	  <option value="09">September</option>
-	  <option value="10">October</option>
-	  <option value="11">November</option>
-	  <option value="12">December</option>
-    </select>
-	<br/>
-	<select class="form-control" id="year_select" name="year_select">
-
-      <option value="2018">2018</option>
-      <option value="2019">2019</option>
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-      <option value="2022">2022</option>
-	  <option value="2023">2023</option>
-	  <option value="2024">2024</option>
-	  <option value="2025">2025</option>
-	  <option value="2026">2026</option>
-	  <option value="2027">2027</option>
-	  <option value="2028">2028</option>
-	  <option value="2029">2029</option>
-    </select-->
   </div>
   <input type="submit" class="btn btn-primary">
 
@@ -127,7 +95,7 @@ ini_set('display_errors', 0);
     <th>Admission Number</th>
     <th>Name</th>
     <th>Item</th>
-	<th>Total Bill</th>
+	<th>Price</th>
   </tr></thead><tbody>
 <?php
 require("connect.php");
@@ -139,24 +107,16 @@ if ($conn->connect_error) {
 //echo "Connected successfully<br>";
 $date1 = $_GET['date'];
 $hostel = $_GET['hostel_select'];
-$sql = "SELECT * FROM student WHERE hostel=".$hostel." ORDER BY rollno ASC";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-
-while($row = $result->fetch_assoc()){
-$rollno=$row["rollno"];
-$roomno=$row["room"];
-$name=$row["name"];
-
-$sql1 = "SELECT itemname,tprice FROM sconsumption where rollno=$rollno AND date='".$date1."'";
+$sql1 = "SELECT s.rollno,tprice,itemname,room,s.name FROM sconsumption s,student st WHERE s.rollno = st.rollno AND date = '".$date1."' AND hostel = '".$hostel."' ORDER BY itemname";
 $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) {
     // output data of each row
 
 
 while($row1 = $result1->fetch_assoc()){
+$rollno=$row1["rollno"];
+$roomno=$row1["room"];
+$name=$row1["name"];
 $totalbill=$row1["itemname"];
 $tprice=$row1["tprice"];
 echo "<tr>";
@@ -166,11 +126,6 @@ echo "   <td>$name</td>";
 echo "   <td>$totalbill</td>";
 echo "   <td>$tprice</td>";
  echo "</tr>";}
-}else{
-//echo "0 Student Records";
-}
-
-  }
 }else{
 echo "0 Student Records";
 }
@@ -187,9 +142,9 @@ $conn->close();
 </tbody>
 </table>
 </div></div></div><div class="col-sm-3"></div></div>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="extra/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="extra/jquery-1.12.4.js"></script>
+  <script src="extra/jquery-ui.js"></script>
 </body>
 </html>
