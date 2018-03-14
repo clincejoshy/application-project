@@ -51,6 +51,9 @@
 		<li class="nav-item">
 		<a href=datebill.php class="nav-link">View Bill by date</a>
 		</li>
+		<li class="nav-item">
+		<a href=excel.php class="nav-link">Export Bill</a>
+		</li>
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
       </li>

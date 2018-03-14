@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>
-Total Bill
+Export Bill
 </title>
 </head>
 <body>
@@ -44,13 +44,13 @@ ini_set('display_errors', 0);
         <a href=consumption.php class="nav-link">New Bill</a>
       </li>
 	<li class="nav-item">
-		<a href=sam2.php class="nav-link active">Total Bill</a>
+		<a href=sam2.php class="nav-link">Total Bill</a>
 		</li>
 		<li class="nav-item">
 		<a href=datebill.php class="nav-link">View Bill by date</a>
 		</li>
 		<li class="nav-item">
-		<a href=excel.php class="nav-link">Export Bill</a>
+		<a href=datebill.php class="nav-link active">Export Bill</a>
 		</li>
 		<li class="nav-item active">
         <a class="nav-link" href="logout1.php">Logout</a>
@@ -64,8 +64,8 @@ ini_set('display_errors', 0);
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-3">Total Bill</h1>
-    <p class="lead">The total bill details of all the students are shown here</p>
+    <h1 class="display-3">Export Bill</h1>
+    <p class="lead">You can export the bill details of students in to excel sheet here</p>
   </div>
 </div>
 <div class="row">
@@ -76,10 +76,10 @@ ini_set('display_errors', 0);
   <!--?php
   echo "<pre>"; echo $_GET["month_select"];  echo "</pre>";
   ?-->
-<form action="sam2.php" method="GET">
+<form action="export.php" method="GET">
 
   <div class="form-group">
-	<select class="form-control" id="hostel_select" name="hostel_select">
+	<select class="form-control" id="hostel_select" name="hostel_select" required>
 
       <option value="01">MH 1</option>
       <option value="02">MH 2</option>
@@ -87,7 +87,7 @@ ini_set('display_errors', 0);
 	  <option value="04">LH</option>
     </select><br/>
     <!--label for="exampleFormControlSelect1">Select Month</label-->
-    <select class="form-control" id="month_select" name="month_select">
+    <select class="form-control" id="month_select" name="month_select" required>
 	  <option selected>Month</option>
       <option value="01">January</option>
       <option value="02">February</option>
@@ -103,7 +103,7 @@ ini_set('display_errors', 0);
 	  <option value="12">December</option>
     </select>
 	<br/>
-	<select class="form-control" id="year_select" name="year_select">
+	<select class="form-control" id="year_select" name="year_select" required>
 
       <option value="2018">2018</option>
       <option value="2019">2019</option>
@@ -119,67 +119,10 @@ ini_set('display_errors', 0);
 	  <option value="2029">2029</option>
     </select>
   </div>
-  <input type="submit" class="btn btn-primary">
+  <input type="submit" value="Export" class="btn btn-primary">
 
 </form>
 <br/>
-<table style="width:100%" class='table'><thead class='thead-dark'>
-  <tr>
-    <th>Room Number</th>
-    <th>Admission Number</th>
-    <th>Name</th>
-    <th>Total Bill</th>
-  </tr></thead><tbody>
-<?php
-require("connect.php");
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-//echo "Connected successfully<br>";
-$month = $_GET['month_select'];
-$year = $_GET['year_select'];
-$hostel = $_GET['hostel_select'];
-$sql = "SELECT * FROM student WHERE hostel=".$hostel." ORDER BY rollno ASC";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-
-while($row = $result->fetch_assoc()){
-$rollno=$row["rollno"];
-$roomno=$row["room"];
-$name=$row["name"];
-
-$sql1 = "SELECT sum(tprice) FROM sconsumption where rollno=$rollno AND date like '__-".$month."-".$year."'";
-$result1 = $conn->query($sql1);
-if ($result1->num_rows > 0) {
-    // output data of each row
-
-
-while($row1 = $result1->fetch_assoc()){
-$totalbill=$row1["sum(tprice)"];
-echo "<tr>";
-echo "    <td>$roomno</td>";
-echo "    <td>$rollno</td>";
-echo "   <td>$name</td>";
-echo "   <td>$totalbill</td>";
- echo "</tr>";}
-}else{
-echo "0 Student Records";
-}
-
-  }
-}else{
-echo "0 Student Records";
-}
-$conn->close();
-?>
-
-
-</tbody>
-</table>
 
 </body>
 </html>
