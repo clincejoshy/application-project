@@ -8,15 +8,6 @@ View bill by Date
 </title>
 </head>
 <body>
-<?php
-error_reporting(0);
-ini_set('display_errors', 0);
-    session_start();
-    if($_SESSION["role"]!="student")
-    {
-        header("location:php/autologinverify.php");
-    }
-?>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.js"></script>
 <script src="js/popper.js"></script>

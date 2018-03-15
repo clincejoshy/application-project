@@ -5,7 +5,6 @@
 		header("location:../verify.php");
 	}
 
-
 	require("connect.php");
 
 
