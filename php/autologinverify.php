@@ -3,7 +3,7 @@ error_reporting(0);
 ini_set('display_errors', 0);
 	session_start();
 
-	if($_SESSION["role"]=="student")
+	if($_SESSION["role"]=="employee")
 	{
 		header("location:../verifybill.php");
 	}
