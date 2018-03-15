@@ -12,7 +12,7 @@ View bill by Date
 error_reporting(0);
 ini_set('display_errors', 0);
     session_start();
-        header("location:php/verifylogin.php");
+        header("location:php/autologinverify.php");
 ?>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.js"></script>
