@@ -20,7 +20,7 @@
 		$_SESSION['user']=$user;
 		//$_SESSION['name']=$row['name'];
 		//$_SESSION['id']=$row['rollno'];
-		$_SESSION['role']="student";
+		$_SESSION['role']="employee";
 
 		header('Location:../verifybill.php');
 
