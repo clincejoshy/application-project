@@ -119,8 +119,16 @@ ini_set('display_errors', 0);
 	  <option value="2029">2029</option>
     </select>
   </div>
-  <input type="submit" class="btn btn-primary">
+  <input type="submit" name="submit" class="btn btn-primary">
+   
 
+</form>
+<br/>
+<form action="export.php" method="GET">
+<input type="hidden" value="<?php echo $_GET["hostel_select"]; ?>" name="hostel_select">
+<input type="hidden" value="<?php echo $_GET["month_select"]; ?>" name="month_select">
+<input type="hidden" value="<?php echo $_GET["year_select"]; ?>" name="year_select">
+<input type="submit" name="export" value="Export details" class="btn btn-success">
 </form>
 <br/>
 <table style="width:100%" class='table'><thead class='thead-dark'>
@@ -131,6 +139,9 @@ ini_set('display_errors', 0);
     <th>Total Bill</th>
   </tr></thead><tbody>
 <?php
+if(isset($_GET['submit']))
+{
+	//echo 'submit';
 require("connect.php");
 
 // Check connection
@@ -175,6 +186,54 @@ echo "0 Student Records";
 echo "0 Student Records";
 }
 $conn->close();
+}
+else if(isset($_GET['Export+details']))
+{
+	//echo 'export';
+	include('dbcon.php');
+
+//$conn = new mysqli('localhost', 'root', 'root');
+//mysqli_select_db($conn, 'mess');
+
+//$setSql = "SELECT ur_Id,ur_username,ur_password FROM tbl_user";
+//$setRec = mysqli_query($conn,$setSql);
+
+$month = $_GET['month_select'];
+$year = $_GET['year_select'];
+$hostel = $_GET['hostel_select'];
+
+$stmt=$db_con->prepare('SELECT rollno,name,SUM(tprice) from sconsumption WHERE date like "__-'.$month.'-'.$year.'" AND rollno IN(SELECT rollno FROM student WHERE hostel="'.$hostel.'") GROUP BY rollno ORDER by rollno');
+$stmt->execute();
+
+
+$columnHeader ='';
+$columnHeader = "Roll No"."\t"."Name"."\t"."Total Bill"."\t".""."\t";
+
+
+$setData='';
+
+while($rec =$stmt->FETCH(PDO::FETCH_ASSOC))
+{
+  $rowData = '';
+  foreach($rec as $value)
+  {
+    $value = '"' . $value . '"' . "\t";
+    $rowData .= $value;
+  }
+  $setData .= trim($rowData)."\n";
+}
+
+
+header("Content-type: application/octet-stream");
+header("Content-Disposition: attachment; filename=Book record sheet.xls");
+header("Pragma: no-cache");
+header("Expires: 0");
+
+echo ucwords($columnHeader)."\n".$setData."\n";
+
+	
+}
+
 ?>
 
 
