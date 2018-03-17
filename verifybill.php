@@ -66,11 +66,13 @@ View bill by Date
 <br/>
 <table class='table'><thead class='thead-dark'>
   <tr>
+    <th>Serial</th>
     <th>Room Number</th>
     <th>Admission Number</th>
     <th>Name</th>
     <th>Item</th>
 	<th>Price</th>
+<th>Verified</th>
   </tr></thead><tbody>
 <?php
 require("connect.php");
@@ -87,7 +89,7 @@ $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) {
     // output data of each row
 
-
+$x = 1;
 while($row1 = $result1->fetch_assoc()){
 $rollno=$row1["rollno"];
 $roomno=$row1["room"];
@@ -95,12 +97,17 @@ $name=$row1["name"];
 $totalbill=$row1["itemname"];
 $tprice=$row1["tprice"];
 echo "<tr>";
+echo "    <td>$x</td>";
 echo "    <td>$roomno</td>";
 echo "    <td>$rollno</td>";
 echo "   <td>$name</td>";
 echo "   <td>$totalbill</td>";
 echo "   <td>$tprice</td>";
- echo "</tr>";}
+echo "<td><input type='checkbox'></td>";
+ echo "</tr>";
+$x=$x+1;
+}
+
 }else{
 echo "0 Student Records";
 }
