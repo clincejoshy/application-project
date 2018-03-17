@@ -68,7 +68,6 @@ View bill by Date
   <tr>
     <th>Serial</th>
     <th>Room Number</th>
-    <th>Admission Number</th>
     <th>Name</th>
     <th>Item</th>
 	<th>Price</th>
@@ -99,7 +98,6 @@ $tprice=$row1["tprice"];
 echo "<tr>";
 echo "    <td>$x</td>";
 echo "    <td>$roomno</td>";
-echo "    <td>$rollno</td>";
 echo "   <td>$name</td>";
 echo "   <td>$totalbill</td>";
 echo "   <td>$tprice</td>";
