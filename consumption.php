@@ -129,6 +129,7 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
 <b>Select the Student Room Number or Admission No</b><br/>
 <script>
         $("select").multipleSelect({
+
             filter: true,
             single: true,
             width: '100%'
@@ -152,7 +153,7 @@ $sql3 = mysqli_query($conn, "SELECT * From student ORDER BY room ASC");
 $row = mysqli_num_rows($sql3);
 
 while ($row = mysqli_fetch_array($sql3)){
-echo "<option value='".$row['rollno']."'>\t".$row['room']." - ".$row['name']."  (".$row['rollno'].")</option>" ;
+echo "<option value='".$row['rollno']."'>\t".$row['room']." - ".$row['name']."</option>" ;
 }
 echo "</select>";
 ?>
@@ -244,6 +245,7 @@ function senddata()
 <script>
         $("select").multipleSelect({
             filter: true,
+            position: 'top',
             width: '100%'
         });
     </script>
