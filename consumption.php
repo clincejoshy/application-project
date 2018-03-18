@@ -129,6 +129,7 @@ echo "<option value='".$row['item_name']."'>".$row['item_name']." - ".$row['pric
 <b>Select the Student Room Number or Admission No</b><br/>
 <script>
         $("select").multipleSelect({
+            filter: true,
             single: true,
             width: '100%'
         });
