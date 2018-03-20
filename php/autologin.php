@@ -1,6 +1,3 @@
-<html lang="en">
-<link rel="stylesheet" href="../assets/css/form-elements.css">
-
 <?php
 	session_start();
 
@@ -11,13 +8,6 @@
 
 		else
 		{
-			echo "404 Not found";
-
+		header("location:../SessionStud.php");
 		}
  ?>
- <br/>
- <br/>
- <br/>
- <br/>
- <button class="btn"><a href="../logout.php">Go To Login Page!</a></button>
-</html>

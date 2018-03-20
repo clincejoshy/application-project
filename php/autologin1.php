@@ -1,21 +1,13 @@
 <?php
-error_reporting(0);
-ini_set('display_errors', 0);
 	session_start();
 
-	if($_SESSION["role"]=="employee")
+	if($_SESSION["role"]=="student")
 	{
 		header("location:../billing.php");
 	}
 
 		else
 		{
-			echo "404 Not found";
+		header("location:../SessionAdmin.php");
 		}
-
  ?>
- <br/>
- <br/>
- <br/>
-<br/>
- <button class="btn"><a class="nav-link" href="../logout1.php">Go To Admin Page!</a></button>

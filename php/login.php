@@ -30,7 +30,7 @@
 	}
 	else
 	{
-		echo "Username and Password does not match";
+		header('Location:../PasswordIncorrect.php');
 	}
 
 
