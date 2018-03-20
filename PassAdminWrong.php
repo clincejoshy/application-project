@@ -66,7 +66,7 @@
 							</div>
 					</div>
 						<h1>Username or Password is Incorrect</h1>
-						<span>Please check agan and Login.</span>
+						<span>Please check and Login Again.</span>
 						<br><br><br>
 						<a href="admin.php" class="button button-xlarge button-circle button-blue"><i class="icon-warning-sign"></i>Login Again!!</a>
 

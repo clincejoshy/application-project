@@ -14,7 +14,7 @@ View bill by Date
 <script src="js/bootstrap.js"></script>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Tricodia - Mess Calculator</a>
+  <a class="navbar-brand" href="#"><img style="height: 75px" src="images/logo.png"> Mess Calculator</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

@@ -68,7 +68,7 @@
 						<h1>Session Expired!!!</h1>
 						<span>Please Login Again.</span>
 						<br><br><br>
-						<a href="admin.php" class="button button-xlarge button-circle button-blue"><i class="icon-warning-sign"></i>Login Again!!</a>
+						<a href="logout1.php" class="button button-xlarge button-circle button-blue"><i class="icon-warning-sign"></i>Login Again!!</a>
 
 					</div>
 

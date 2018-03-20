@@ -1,101 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en-US">
+<head>
 
-    <head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Mess Admin login</title>
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="styles/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="styles/style.css" type="text/css" />
+	<link rel="stylesheet" href="styles/css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="styles/css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="styles/css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="styles/css/magnific-popup.css" type="text/css" />
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/form-elements.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+	<!-- Document Title
+	============================================= -->
+	<title>Login - Students Login</title>
 
-        <!-- Favicon and touch icons -->
-    <!--     <link rel="shortcut icon" href="assets/ico/favicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
- -->
-    </head>
+</head>
 
-    <body>
-<?php
+<body class="stretched">
+	<?php
     session_start();
     if(isset($_SESSION["user"]))
     {
-        header("location:php/autologin1.php");
+        header("location:php/autologin.php");
     }
 ?>
 
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
 
-        <!-- Top content -->
-        <div class="top-content">
+		<!-- Content
+		============================================= -->
+		<section id="content">
 
-            <div class="inner-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Mess Admin</strong> Login</h1>
+			<div class="content-wrap nopadding">
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
-                        		<div class="form-top-left">
-                        			<h3>Login</h3>
+				<div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: url('images/1.jpg') center center no-repeat; background-size: cover;"></div>
 
-                        		</div>
+				<div class="section nobg full-screen nopadding nomargin">
 
-                            </div>
-                            <div class="form-bottom">
-			                    <form role="form" action="php/login1.php" method="post" class="login-form">
-			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">User Name</label>
-			                        	<input type="text" name="email" placeholder="User name" class="form-username form-control" id="form-username">
-			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
-			                        </div>
+					<div class="container-fluid vertical-middle divcenter clearfix">
 
-			                        <button type="submit" class="btn">Sign in!</button>
-			                    </form>
-		                    </div>
-                        </div>
-                    </div>
+						<div class="center">
+							<a href="index.php"><img src="images/logo.png" style="height: 200px" alt="Canvas Logo"></a>
+						</div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+						<div class="card divcenter noradius noborder" style="max-width: 400px; background-color: rgba(255,255,255,0.93);">
+							<div class="card-body" style="padding: 40px;">
+								<form role="form" action="php/login1.php" method="post" class="login-form">
+									<h3>Login to your Account</h3>
 
-        </div>
+									<div class="col_full">
+										<label for="login-form-username">Username:</label>
+										<input type="text" name="email" placeholder="Username" id="form-username" class="form-control not-dark" />
+									</div>
 
+									<div class="col_full">
+										<label for="login-form-password">Password:</label>
+										<input type="password" name="password" placeholder="Password" id="form-password" class="form-control not-dark" />
+									</div>
 
-        <!-- Javascript -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
+									<div class="col_full nobottommargin">
+										<button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+										<a href="#" class="btn btn-info" data-notify-type="warning" data-notify-msg="Please Contact Admin at <br>+91 80891 44967" onclick="SEMICOLON.widget.notifications(this); return false;">Can't Login?</a>
+									</div>
 
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
+								</form>
+							</div>
+						</div>
 
-    </body>
+						<div class="center dark"><small>Copyrights &copy; All Rights Reserved by Tricodia.</small></div>
 
+					</div>
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
+
+</body>
 </html>
