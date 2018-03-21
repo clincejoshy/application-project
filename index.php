@@ -20,7 +20,7 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>Login - Students Login</title>
+	<title>Mess - Students Login</title>
 
 </head>
 
